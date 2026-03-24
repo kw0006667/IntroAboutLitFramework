@@ -75,6 +75,11 @@ a:hover {
   height: 100vh;
   overflow: hidden;
   max-width: 100%;
+  transition: grid-template-columns 220ms ease;
+}
+
+body.sidebar-collapsed #app {
+  grid-template-columns: 0 1fr;
 }
 
 /* ─── Mobile Top Bar ─── */
@@ -149,6 +154,10 @@ a:hover {
     overflow: auto;
   }
 
+  body.sidebar-collapsed #app {
+    grid-template-columns: 1fr;
+  }
+
   #app {
     grid-template-columns: 1fr;
     height: auto;
@@ -174,5 +183,9 @@ a:hover {
 @media (min-width: 768px) {
   #sections-toggle {
     display: none;
+  }
+
+  body.sidebar-collapsed:not(.desktop-sections-collapsed) #content-wrapper {
+    padding-right: 260px;
   }
 }

@@ -3,10 +3,13 @@ import { chapters, parts } from './chapters/index.js';
 // Mobile state: 'closed' | 'drawer' | 'sections'
 let mobileState = 'closed';
 let _currentChapterId = null;
+const SIDEBAR_STORAGE_KEY = 'lit-guide-sidebar-collapsed';
+const DESKTOP_SECTIONS_STORAGE_KEY = 'lit-guide-desktop-sections-collapsed';
 
 export function initNav() {
   buildSidebarNav();
   buildDrawerNav();
+  initDesktopSidebarControls();
   initMobileControls();
 }
 
@@ -191,6 +194,27 @@ function updateSectionsPanelActive(sectionSlug) {
 
 // ─── Mobile Controls ───
 
+function initDesktopSidebarControls() {
+  const collapseToggle = document.getElementById('sidebar-collapse-toggle');
+  const expandToggle = document.getElementById('sidebar-expand-toggle');
+  const stored = window.localStorage.getItem(SIDEBAR_STORAGE_KEY);
+  const sectionsStored = window.localStorage.getItem(DESKTOP_SECTIONS_STORAGE_KEY);
+
+  applyDesktopSidebarState(stored === 'true');
+  applyDesktopSectionsState(sectionsStored === 'true');
+
+  collapseToggle?.addEventListener('click', () => {
+    applyDesktopSidebarState(true);
+    applyDesktopSectionsState(false);
+    setMobileState('closed');
+  });
+
+  expandToggle?.addEventListener('click', () => {
+    applyDesktopSidebarState(false);
+    applyDesktopSectionsState(false);
+  });
+}
+
 function initMobileControls() {
   const hamburger = document.getElementById('hamburger');
   const drawerClose = document.getElementById('drawer-close');
@@ -204,13 +228,33 @@ function initMobileControls() {
 
   drawerClose?.addEventListener('click', () => setMobileState('closed'));
   sectionsToggle?.addEventListener('click', () => {
+    if (isDesktop()) {
+      applyDesktopSectionsState(false);
+      return;
+    }
+
     setMobileState(mobileState === 'sections' ? 'closed' : 'sections');
   });
-  sectionsClose?.addEventListener('click', () => setMobileState('closed'));
+  sectionsClose?.addEventListener('click', () => {
+    if (isDesktop()) {
+      applyDesktopSectionsState(true);
+      return;
+    }
+
+    setMobileState('closed');
+  });
   overlay?.addEventListener('click', () => setMobileState('closed'));
 }
 
 function setMobileState(newState) {
+  if (isDesktop()) {
+    newState = 'closed';
+  }
+
+  if (newState !== 'closed' && !isDesktop() && !document.body.classList.contains('sidebar-collapsed')) {
+    newState = 'closed';
+  }
+
   mobileState = newState;
 
   const drawer = document.getElementById('mobile-drawer');
@@ -225,11 +269,51 @@ function setMobileState(newState) {
   panel?.classList.toggle('open', newState === 'sections');
   panel?.setAttribute('aria-hidden', String(newState !== 'sections'));
 
-  overlay?.classList.toggle('active', newState !== 'closed');
+  overlay?.classList.toggle('active', newState !== 'closed' && (!isDesktop() || document.body.classList.contains('sidebar-collapsed')));
 
   hamburger?.setAttribute('aria-expanded', String(newState === 'drawer'));
   sectionsToggle?.setAttribute('aria-expanded', String(newState === 'sections'));
 
   // Prevent body scroll when drawer/panel is open (mobile)
-  document.body.style.overflow = newState !== 'closed' ? 'hidden' : '';
+  document.body.style.overflow = newState !== 'closed' && !isDesktop() ? 'hidden' : '';
+}
+
+function applyDesktopSidebarState(collapsed) {
+  document.body.classList.toggle('sidebar-collapsed', collapsed);
+  window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(collapsed));
+
+  const collapseToggle = document.getElementById('sidebar-collapse-toggle');
+  const expandToggle = document.getElementById('sidebar-expand-toggle');
+  const sectionsToggle = document.getElementById('sections-toggle');
+
+  collapseToggle?.setAttribute('aria-label', collapsed ? '側欄已收起' : '收起側欄');
+  collapseToggle?.setAttribute('aria-expanded', String(!collapsed));
+  expandToggle?.setAttribute('aria-expanded', String(!collapsed));
+  sectionsToggle?.setAttribute('aria-hidden', String(!(collapsed && document.body.classList.contains('desktop-sections-collapsed') && isDesktop())));
+
+  if (!collapsed) {
+    setMobileState('closed');
+    applyDesktopSectionsState(false);
+  }
+}
+
+function applyDesktopSectionsState(collapsed) {
+  document.body.classList.toggle('desktop-sections-collapsed', collapsed);
+  window.localStorage.setItem(DESKTOP_SECTIONS_STORAGE_KEY, String(collapsed));
+
+  const sectionsToggle = document.getElementById('sections-toggle');
+  const sectionsClose = document.getElementById('sections-close');
+  const panel = document.getElementById('sections-panel');
+  const shouldShowExpand = isDesktop()
+    && document.body.classList.contains('sidebar-collapsed')
+    && collapsed;
+
+  sectionsToggle?.setAttribute('aria-hidden', String(!shouldShowExpand));
+  sectionsToggle?.setAttribute('aria-expanded', String(!collapsed));
+  sectionsClose?.setAttribute('aria-label', collapsed ? '展開章節清單' : '收起章節清單');
+  panel?.setAttribute('aria-hidden', String(isDesktop() ? collapsed || !document.body.classList.contains('sidebar-collapsed') : mobileState !== 'sections'));
+}
+
+function isDesktop() {
+  return window.matchMedia('(min-width: 768px)').matches;
 }
