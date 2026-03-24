@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lit Framework 完全指南</title>
+  <link rel="icon" type="image/svg+xml" href="/IntroAboutLitFramework/staging/assets/favicon-Coos3fRl.svg" />
+
+  <!-- Prism.js syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" id="prism-theme-light" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" id="prism-theme-dark" disabled />
+
+  <script type="module" crossorigin src="/IntroAboutLitFramework/staging/assets/index-BJoZmvcs.js"></script>
+  <link rel="stylesheet" crossorigin href="/IntroAboutLitFramework/staging/assets/index-Ddgpe4KW.css">
+</head>
+<body>
+  <!-- Mobile Top Bar -->
+  <header id="top-bar">
+    <button id="hamburger" aria-label="開啟目錄" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <span class="top-bar-title">Lit Framework 完全指南</span>
+    <button id="theme-toggle-mobile" aria-label="切換主題" title="切換深淺色主題">
+      <span class="theme-icon">☀</span>
+    </button>
+  </header>
+
+  <!-- Overlay (shared by drawer and sections panel) -->
+  <div id="overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Left Drawer (chapters only) -->
+  <aside id="mobile-drawer" aria-label="章節目錄" aria-hidden="true">
+    <div class="drawer-header">
+      <span>目錄</span>
+      <button id="drawer-close" aria-label="關閉目錄">✕</button>
+    </div>
+    <nav id="drawer-nav"></nav>
+  </aside>
+
+  <!-- Mobile Right Sections Panel -->
+  <aside id="sections-panel" aria-label="本章節目" aria-hidden="true">
+    <div class="drawer-header">
+      <span>本章節目</span>
+      <button id="sections-close" aria-label="關閉節目清單">✕</button>
+    </div>
+    <nav id="sections-nav"></nav>
+  </aside>
+
+  <!-- Main App Grid -->
+  <div id="app">
+    <!-- Desktop Sidebar -->
+    <aside id="sidebar" aria-label="章節目錄">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6L12 2z" fill="var(--color-accent)" opacity="0.9"/>
+            <path d="M12 5l-5 2.5v4c0 3.47 2.4 6.71 5 7.5 2.6-.79 5-4.03 5-7.5v-4L12 5z" fill="white" opacity="0.3"/>
+          </svg>
+          <span>Lit 完全指南</span>
+        </div>
+        <button id="theme-toggle" aria-label="切換主題" title="切換深淺色主題">
+          <span class="theme-icon">☀</span>
+        </button>
+      </div>
+      <nav id="sidebar-nav"></nav>
+    </aside>
+
+    <!-- Content Area -->
+    <main id="content-area">
+      <div id="content-wrapper">
+        <div id="content-body">
+          <!-- Chapter content injected here -->
+          <div class="loading-placeholder">
+            <div class="loading-spinner"></div>
+            <p>載入中...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Sections Toggle Button -->
+  <button id="sections-toggle" aria-label="查看本章節目" aria-expanded="false">
+    <span>≡</span> 節目
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script>
+    if (typeof Prism !== 'undefined' && Prism.plugins && Prism.plugins.autoloader) {
+      Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs@1/components/';
+    }
+  </script>
+</body>
+</html>
