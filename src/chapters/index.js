@@ -1,0 +1,351 @@
+export const parts = [
+  {
+    id: 1,
+    title: 'Part I：基礎與背景',
+    chapters: [1, 2, 3],
+  },
+  {
+    id: 2,
+    title: 'Part II：核心機制深度解析',
+    chapters: [4, 5, 6, 7, 8],
+  },
+  {
+    id: 3,
+    title: 'Part III：Lit vs React — 深度比較',
+    chapters: [9, 10, 11, 12],
+  },
+  {
+    id: 4,
+    title: 'Part IV：進階應用與架構模式',
+    chapters: [13, 14, 15],
+  },
+  {
+    id: 5,
+    title: 'Part V：高效能視覺應用場景',
+    chapters: [16, 17, 18, 19, 20],
+  },
+  {
+    id: 6,
+    title: 'Part VI：生態系與未來展望',
+    chapters: [21, 22],
+  },
+];
+
+export const chapters = [
+  {
+    id: 1,
+    slug: 'chapter-1',
+    title: 'Web Components 的前世今生',
+    part: 1,
+    sections: [
+      { slug: 'pre-framework-era', title: '框架戰爭前夜' },
+      { slug: 'jquery-dominance', title: 'jQuery 的稱霸時代' },
+      { slug: 'spa-revolution', title: 'SPA 框架的崛起' },
+      { slug: 'wc-spec-birth', title: 'Web Components 規格誕生' },
+      { slug: 'polymer-to-lit', title: 'Polymer → LitElement → Lit' },
+      { slug: 'why-native-wins', title: '為何原生標準終將勝出' },
+    ],
+  },
+  {
+    id: 2,
+    slug: 'chapter-2',
+    title: '認識 Lit：設計哲學與核心理念',
+    part: 1,
+    sections: [
+      { slug: 'embrace-the-platform', title: 'Embrace the Platform 哲學' },
+      { slug: 'minimalism-design', title: '極簡主義的設計取捨' },
+      { slug: 'no-framework-lock-in', title: '零框架鎖定的承諾' },
+      { slug: 'lit-architecture-overview', title: 'Lit 架構全覽' },
+      { slug: 'when-to-choose-lit', title: '何時選擇 Lit？' },
+    ],
+  },
+  {
+    id: 3,
+    slug: 'chapter-3',
+    title: '環境建置與第一個 Lit Component',
+    part: 1,
+    sections: [
+      { slug: 'prerequisites', title: '前置需求與工具鏈' },
+      { slug: 'project-setup', title: '建立 Vite + TypeScript 專案' },
+      { slug: 'first-component', title: '撰寫第一個 Custom Element' },
+      { slug: 'shadow-dom-intro', title: 'Shadow DOM 是什麼？' },
+      { slug: 'templates-slots', title: 'Templates 與 Slots' },
+      { slug: 'dev-workflow', title: '開發工作流與除錯技巧' },
+    ],
+  },
+  {
+    id: 4,
+    slug: 'chapter-4',
+    title: 'Reactive Properties 與更新週期',
+    part: 2,
+    sections: [
+      { slug: 'property-decorator', title: '@property 裝飾器深探' },
+      { slug: 'state-decorator', title: '@state 內部狀態管理' },
+      { slug: 'reactive-update-cycle', title: 'Reactive Update Cycle 原理' },
+      { slug: 'microtask-queue', title: '與 Microtask Queue 的協作' },
+      { slug: 'property-options', title: 'Property Options 進階配置' },
+      { slug: 'observed-attributes', title: 'Observed Attributes 與 HTML Attributes' },
+    ],
+  },
+  {
+    id: 5,
+    slug: 'chapter-5',
+    title: 'lit-html 模板引擎：Tagged Template Literals 的威力',
+    part: 2,
+    sections: [
+      { slug: 'tagged-template-literals', title: 'Tagged Template Literals 原理' },
+      { slug: 'why-no-vdom', title: '為何不需要 Virtual DOM？' },
+      { slug: 'part-system', title: 'Part 系統：精準 DOM 更新' },
+      { slug: 'binding-types', title: '五種 Binding 類型' },
+      { slug: 'dynamic-templates', title: '動態模板與條件渲染' },
+      { slug: 'template-caching', title: '模板快取機制' },
+    ],
+  },
+  {
+    id: 6,
+    slug: 'chapter-6',
+    title: '生命週期：從 connectedCallback 到 updateComplete',
+    part: 2,
+    sections: [
+      { slug: 'wc-lifecycle', title: 'Web Components 原生生命週期' },
+      { slug: 'lit-lifecycle-map', title: 'Lit 生命週期完整地圖' },
+      { slug: 'first-updated', title: 'firstUpdated 的正確使用' },
+      { slug: 'updated-hook', title: 'updated() 與副作用處理' },
+      { slug: 'will-update', title: 'willUpdate() 的計算屬性模式' },
+      { slug: 'update-complete', title: 'updateComplete Promise 的應用' },
+    ],
+  },
+  {
+    id: 7,
+    slug: 'chapter-7',
+    title: 'Directives：擴展模板的超能力',
+    part: 2,
+    sections: [
+      { slug: 'what-are-directives', title: 'Directive 是什麼？' },
+      { slug: 'repeat-directive', title: 'repeat：高效列表渲染' },
+      { slug: 'class-style-map', title: 'classMap 與 styleMap' },
+      { slug: 'until-async-directive', title: 'until 與非同步資料' },
+      { slug: 'cache-guard-directives', title: 'cache 與 guard 的效能優化' },
+      { slug: 'custom-directives', title: '撰寫自訂 Directive' },
+    ],
+  },
+  {
+    id: 8,
+    slug: 'chapter-8',
+    title: 'Context API 與跨元件通訊',
+    part: 2,
+    sections: [
+      { slug: 'communication-patterns', title: '元件通訊模式總覽' },
+      { slug: 'event-based', title: 'Event-based 通訊' },
+      { slug: 'slots-composition', title: 'Slots 與元件組合' },
+      { slug: 'lit-context-api', title: '@lit/context 深度解析' },
+      { slug: 'context-provider-consumer', title: 'Provider / Consumer 模式' },
+      { slug: 'choosing-pattern', title: '如何選擇通訊策略' },
+    ],
+  },
+  {
+    id: 9,
+    slug: 'chapter-9',
+    title: '心智模型的根本差異',
+    part: 3,
+    sections: [
+      { slug: 'function-vs-dom-node', title: '函數 vs DOM 節點的元件觀' },
+      { slug: 'shadow-dom-css-impact', title: 'Shadow DOM 對 CSS 的影響' },
+      { slug: 'event-bubbling-shadow', title: '事件冒泡與 Shadow DOM' },
+      { slug: 'react-fiber-vs-lit', title: 'React Fiber vs Lit 更新策略' },
+      { slug: 'jsx-vs-tagged-templates', title: 'JSX vs Tagged Template Literals' },
+    ],
+  },
+  {
+    id: 10,
+    slug: 'chapter-10',
+    title: '狀態管理的不同路徑',
+    part: 3,
+    sections: [
+      { slug: 'react-state-hooks', title: 'React useState / useReducer' },
+      { slug: 'lit-reactive-state', title: 'Lit 的 Reactive Properties' },
+      { slug: 'mobx-integration', title: 'MobX 與 Lit 整合' },
+      { slug: 'zustand-integration', title: 'Zustand 跨框架狀態' },
+      { slug: 'signals-preview', title: 'Signals：下一代響應式原語' },
+      { slug: 'state-strategy', title: '狀態管理策略選型指南' },
+    ],
+  },
+  {
+    id: 11,
+    slug: 'chapter-11',
+    title: '效能剖析：Virtual DOM vs. Lit 的 Fine-grained Updates',
+    part: 3,
+    sections: [
+      { slug: 'vdom-explained', title: 'Virtual DOM 的運作原理' },
+      { slug: 'lit-fine-grained', title: 'Lit 的精細更新策略' },
+      { slug: 'benchmark-methodology', title: 'Benchmark 方法論' },
+      { slug: 'list-rendering-perf', title: '大量列表渲染比較' },
+      { slug: 'high-frequency-updates', title: '高頻更新場景分析' },
+      { slug: 'devtools-profiling', title: 'Chrome DevTools 效能分析實戰' },
+    ],
+  },
+  {
+    id: 12,
+    slug: 'chapter-12',
+    title: '互通性：在 React 應用中使用 Lit，或反之',
+    part: 3,
+    sections: [
+      { slug: 'web-components-in-react', title: '在 React 中使用 Web Components' },
+      { slug: 'lit-react-wrapper', title: '@lit/react Wrapper 詳解' },
+      { slug: 'event-interop', title: '事件系統互通' },
+      { slug: 'microfrontend-patterns', title: '微前端架構應用' },
+      { slug: 'migration-strategy', title: '漸進式遷移策略' },
+    ],
+  },
+  {
+    id: 13,
+    slug: 'chapter-13',
+    title: '設計系統與 Component Library 的建構',
+    part: 4,
+    sections: [
+      { slug: 'design-system-why', title: '為何用 Lit 建設計系統？' },
+      { slug: 'css-custom-properties-theming', title: 'CSS Custom Properties Theming' },
+      { slug: 'token-system', title: 'Design Token 系統設計' },
+      { slug: 'storybook-integration', title: 'Storybook 整合' },
+      { slug: 'versioning-strategy', title: '版本策略與 Breaking Changes' },
+      { slug: 'publishing-npm', title: '發佈到 npm 的最佳實踐' },
+    ],
+  },
+  {
+    id: 14,
+    slug: 'chapter-14',
+    title: 'SSR 與 Hydration：Lit 的伺服器端渲染之路',
+    part: 4,
+    sections: [
+      { slug: 'why-ssr', title: '為何需要 SSR？' },
+      { slug: 'declarative-shadow-dom', title: 'Declarative Shadow DOM' },
+      { slug: 'lit-ssr-package', title: '@lit-labs/ssr 運作原理' },
+      { slug: 'node-integration', title: 'Node.js 整合實踐' },
+      { slug: 'edge-runtime', title: 'Edge Runtime 部署' },
+      { slug: 'hydration-strategies', title: 'Hydration 策略比較' },
+    ],
+  },
+  {
+    id: 15,
+    slug: 'chapter-15',
+    title: 'Testing 策略：Web Test Runner 與 Playwright',
+    part: 4,
+    sections: [
+      { slug: 'testing-philosophy', title: '測試哲學與策略' },
+      { slug: 'web-test-runner-setup', title: 'Web Test Runner 環境設定' },
+      { slug: 'unit-testing-components', title: '元件單元測試' },
+      { slug: 'shadow-dom-querying', title: 'Shadow DOM 查詢技巧' },
+      { slug: 'playwright-e2e', title: 'Playwright E2E 測試' },
+      { slug: 'ci-integration', title: 'CI/CD 整合' },
+    ],
+  },
+  {
+    id: 16,
+    slug: 'chapter-16',
+    title: 'Lit 與 Image 處理：動態圖片元件的設計',
+    part: 5,
+    sections: [
+      { slug: 'lazy-loading', title: 'Lazy Loading 實作' },
+      { slug: 'intersection-observer', title: 'Intersection Observer API' },
+      { slug: 'progressive-image', title: 'Progressive Image Loading' },
+      { slug: 'responsive-images', title: 'Responsive Images 與 srcset' },
+      { slug: 'canvas-image-composite', title: 'Canvas 圖片合成封裝' },
+    ],
+  },
+  {
+    id: 17,
+    slug: 'chapter-17',
+    title: 'Canvas 深度整合：在 Lit Component 中管理 2D 繪圖生命週期',
+    part: 5,
+    sections: [
+      { slug: 'canvas-in-shadow-dom', title: 'Shadow DOM 中的 Canvas' },
+      { slug: 'resize-handling', title: 'Resize 事件與 ResizeObserver' },
+      { slug: 'hidpi-scaling', title: 'HiDPI / Retina 縮放處理' },
+      { slug: 'animation-loop', title: 'requestAnimationFrame 動畫迴圈' },
+      { slug: 'declarative-canvas', title: '宣告式更新與命令式 Canvas 整合' },
+    ],
+  },
+  {
+    id: 18,
+    slug: 'chapter-18',
+    title: 'WebGL 與 Three.js：Lit 作為 3D 場景的容器',
+    part: 5,
+    sections: [
+      { slug: 'webgl-context-lifecycle', title: 'WebGL Context 生命週期管理' },
+      { slug: 'threejs-setup', title: 'Three.js 場景封裝' },
+      { slug: 'reactive-props-3d', title: 'Reactive Properties 驅動 3D 場景' },
+      { slug: 'resource-cleanup', title: '資源清理與記憶體管理' },
+      { slug: 'postprocessing', title: '後處理效果整合' },
+    ],
+  },
+  {
+    id: 19,
+    slug: 'chapter-19',
+    title: 'WebGPU：下一代 GPU 運算與 Lit 的整合',
+    part: 5,
+    sections: [
+      { slug: 'webgpu-intro', title: 'WebGPU API 入門' },
+      { slug: 'gpudevice-lifecycle', title: 'GPUDevice 初始化與釋放' },
+      { slug: 'compute-shader', title: 'Compute Shader 驅動粒子系統' },
+      { slug: 'render-pipeline', title: 'GPU 渲染管線封裝' },
+      { slug: 'image-postprocess', title: 'GPU 影像後處理管線' },
+    ],
+  },
+  {
+    id: 20,
+    slug: 'chapter-20',
+    title: 'Web Workers 與 OffscreenCanvas：將運算移出主執行緒',
+    part: 5,
+    sections: [
+      { slug: 'why-workers', title: '為何需要 Web Workers？' },
+      { slug: 'worker-communication', title: 'Worker 通訊設計模式' },
+      { slug: 'offscreen-canvas', title: 'OffscreenCanvas 轉移' },
+      { slug: 'lit-worker-integration', title: 'Lit 與 Worker 的整合模式' },
+      { slug: 'performance-gains', title: '效能提升實測' },
+    ],
+  },
+  {
+    id: 21,
+    slug: 'chapter-21',
+    title: 'Lit 生態全景：Labs、工具鏈與社群',
+    part: 6,
+    sections: [
+      { slug: 'lit-labs-overview', title: '@lit-labs 套件總覽' },
+      { slug: 'task-package', title: '@lit-labs/task 非同步任務' },
+      { slug: 'motion-package', title: '@lit-labs/motion 動畫' },
+      { slug: 'virtualizer', title: '@lit-labs/virtualizer 虛擬滾動' },
+      { slug: 'open-wc', title: 'Open Web Components 社群資源' },
+      { slug: 'toolchain-ecosystem', title: '工具鏈生態系統' },
+    ],
+  },
+  {
+    id: 22,
+    slug: 'chapter-22',
+    title: 'Web Components 的未來：Signals、Declarative Custom Elements 與標準化趨勢',
+    part: 6,
+    sections: [
+      { slug: 'tc39-signals', title: 'TC39 Signals Proposal' },
+      { slug: 'signals-lit-impact', title: 'Signals 對 Lit 的影響' },
+      { slug: 'declarative-custom-elements', title: 'Declarative Custom Elements' },
+      { slug: 'css-scope', title: 'CSS @scope 與 Shadow DOM 的未來' },
+      { slug: 'wc-standards-gaps', title: 'Web Components 現有缺口與補足' },
+      { slug: 'future-outlook', title: '展望：下一個十年的 Web 元件' },
+    ],
+  },
+];
+
+export function getChapterById(id) {
+  return chapters.find((ch) => ch.id === id);
+}
+
+export function getPartForChapter(chapterId) {
+  return parts.find((p) => p.chapters.includes(chapterId));
+}
+
+export function getPrevNext(chapterId) {
+  const idx = chapters.findIndex((ch) => ch.id === chapterId);
+  return {
+    prev: idx > 0 ? chapters[idx - 1] : null,
+    next: idx < chapters.length - 1 ? chapters[idx + 1] : null,
+  };
+}

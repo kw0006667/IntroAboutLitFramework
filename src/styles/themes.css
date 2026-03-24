@@ -1,0 +1,27 @@
+/* ─── Dark Theme Overrides ─── */
+html[data-theme="dark"] {
+  --color-bg: #1e1e2e;
+  --color-bg-sidebar: #181825;
+  --color-bg-elevated: #24243e;
+  --color-bg-hover: #2a2a3e;
+  --color-text-primary: #cdd6f4;
+  --color-text-secondary: #a6adc8;
+  --color-text-muted: #6c7086;
+  --color-text-heading: #ffffff;
+  --color-accent: #FF8C42;
+  --color-accent-hover: #FFA060;
+  --color-accent-soft: rgba(255, 140, 66, 0.12);
+  --color-border: #313244;
+  --color-border-strong: #45475a;
+  --color-code-bg: #11111b;
+  --color-code-text: #cdd6f4;
+  --color-inline-code-bg: #2a2a3e;
+  --color-inline-code-text: #f38ba8;
+  --color-blockquote-border: #FF8C42;
+  --color-blockquote-bg: rgba(255, 140, 66, 0.08);
+  --color-table-header-bg: #24243e;
+  --color-table-row-alt: #1e1e2e;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+}
+

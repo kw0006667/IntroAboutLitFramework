@@ -1,0 +1,360 @@
+/* ─── Desktop Sidebar ─── */
+#sidebar {
+  background: var(--color-bg-sidebar);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text-heading);
+  letter-spacing: -0.01em;
+}
+
+#sidebar-nav {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px 0 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+#sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+#sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+#sidebar-nav::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+
+/* ─── Part Labels ─── */
+.nav-part-label {
+  padding: 16px 16px 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.nav-part-label:first-child {
+  padding-top: 8px;
+}
+
+/* ─── Chapter Items ─── */
+.nav-chapter {
+  list-style: none;
+}
+
+.nav-chapter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-family: var(--font-ui);
+  font-size: 0.855rem;
+  font-weight: 500;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+  border-radius: 0;
+}
+
+.nav-chapter-trigger:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-heading);
+}
+
+.nav-chapter-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  transition: transform var(--transition), color var(--transition);
+}
+
+.nav-chapter-title {
+  flex: 1;
+  padding: 8px 12px 8px 0;
+  line-height: 1.35;
+}
+
+.nav-chapter.is-open .nav-chapter-arrow {
+  transform: rotate(90deg);
+  color: var(--color-accent);
+}
+
+.nav-chapter--active > .nav-chapter-trigger {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.nav-chapter--active > .nav-chapter-trigger .nav-chapter-arrow {
+  color: var(--color-accent);
+}
+
+/* ─── Section Sub-items ─── */
+.nav-sections {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 250ms ease;
+}
+
+.nav-chapter.is-open .nav-sections {
+  max-height: 600px;
+}
+
+.nav-section-link {
+  display: block;
+  padding: 6px 12px 6px 32px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  transition: background var(--transition), color var(--transition);
+  border-left: 2px solid transparent;
+  margin-left: 30px;
+  border-radius: var(--radius-sm);
+}
+
+.nav-section-link:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-hover);
+  text-decoration: none;
+}
+
+.nav-section-link.active {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  font-weight: 500;
+}
+
+/* ─── Theme Toggle Button ─── */
+#theme-toggle, #theme-toggle-mobile {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  flex-shrink: 0;
+}
+
+#theme-toggle:hover, #theme-toggle-mobile:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+/* ─── Hamburger Button ─── */
+#hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 1px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ─── Mobile Left Drawer ─── */
+#mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: var(--color-bg-sidebar);
+  border-right: 1px solid var(--color-border);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 250ms ease;
+}
+
+#mobile-drawer.open {
+  transform: translateX(0);
+}
+
+/* ─── Mobile Right Sections Panel ─── */
+#sections-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 260px;
+  max-width: 80vw;
+  background: var(--color-bg-sidebar);
+  border-left: 1px solid var(--color-border);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 250ms ease;
+}
+
+#sections-panel.open {
+  transform: translateX(0);
+}
+
+/* ─── Drawer Header ─── */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-heading);
+}
+
+#drawer-close, #sections-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+
+#drawer-close:hover, #sections-close:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+/* ─── Drawer Nav (chapters only) ─── */
+#drawer-nav {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px 0;
+}
+
+.drawer-chapter-link {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: background var(--transition), color var(--transition);
+  line-height: 1.4;
+}
+
+.drawer-chapter-link:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.drawer-chapter-link.active {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  font-weight: 500;
+}
+
+.drawer-part-label {
+  padding: 14px 16px 4px;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+/* ─── Sections Nav (in panel) ─── */
+#sections-nav {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px 0;
+}
+
+.panel-section-link {
+  display: block;
+  padding: 9px 16px;
+  font-size: 0.855rem;
+  color: var(--color-text-secondary);
+  transition: background var(--transition), color var(--transition);
+  line-height: 1.4;
+}
+
+.panel-section-link:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.panel-section-link.active {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  font-weight: 500;
+}
+
+/* ─── Mobile Sections Toggle Button ─── */
+#sections-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 16px;
+  z-index: 90;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--color-shadow-strong);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  font-family: var(--font-ui);
+}
+
+#sections-toggle:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--color-shadow-strong);
+}
