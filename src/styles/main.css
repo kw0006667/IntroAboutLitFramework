@@ -30,6 +30,7 @@
   --color-shadow-strong: rgba(0, 0, 0, 0.15);
 
   --sidebar-width: 280px;
+  --desktop-sections-width: 260px;
   --topbar-height: 52px;
   --content-max-width: 860px;
   --font-ui: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -186,6 +187,7 @@ body.sidebar-collapsed #app {
   }
 
   body.sidebar-collapsed:not(.desktop-sections-collapsed) #content-wrapper {
-    padding-right: 260px;
+    max-width: calc(var(--content-max-width) + var(--desktop-sections-width));
+    padding-right: calc(48px + var(--desktop-sections-width));
   }
 }

@@ -21,9 +21,32 @@
       <span class="hamburger-line"></span>
     </button>
     <span class="top-bar-title">Lit Framework 完全指南</span>
-    <button id="theme-toggle-mobile" aria-label="切換主題" title="切換深淺色主題">
-      <span class="theme-icon">☀</span>
-    </button>
+    <div class="header-controls">
+      <div class="language-menu-wrap" data-language-menu>
+        <button
+          type="button"
+          class="language-menu-trigger"
+          aria-label="選擇語言"
+          aria-haspopup="true"
+          aria-expanded="false"
+          title="語言選項（即將推出）"
+          disabled
+        >
+          <span class="language-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="language-menu" role="menu" aria-label="語言選單" hidden>
+          <button type="button" class="language-menu-item" role="menuitemradio" aria-checked="false" disabled>
+            <span>English</span>
+          </button>
+          <button type="button" class="language-menu-item is-active" role="menuitemradio" aria-checked="true" disabled>
+            <span>繁體中文</span>
+          </button>
+        </div>
+      </div>
+      <button id="theme-toggle-mobile" aria-label="切換主題" title="切換深淺色主題">
+        <span class="theme-icon">☀</span>
+      </button>
+    </div>
   </header>
 
   <!-- Overlay (shared by drawer and sections panel) -->
@@ -59,12 +82,38 @@
           </svg>
           <span>Lit 完全指南</span>
         </div>
-        <button id="theme-toggle" aria-label="切換主題" title="切換深淺色主題">
-          <span class="theme-icon">☀</span>
-        </button>
+        <div class="header-controls">
+          <button id="theme-toggle" aria-label="切換主題" title="切換深淺色主題">
+            <span class="theme-icon">☀</span>
+          </button>
+        </div>
         <button id="sidebar-collapse-toggle" aria-label="收起側欄" title="收起側欄">
           <span aria-hidden="true">←</span>
         </button>
+      </div>
+      <div class="sidebar-toolbar">
+        <div class="language-menu-wrap" data-language-menu>
+          <button
+            type="button"
+            class="language-menu-trigger"
+            aria-label="選擇語言"
+            aria-haspopup="true"
+            aria-expanded="false"
+            title="語言選項（即將推出）"
+            disabled
+          >
+            <span class="language-label">繁體中文</span>
+            <span class="language-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="language-menu" role="menu" aria-label="語言選單" hidden>
+            <button type="button" class="language-menu-item" role="menuitemradio" aria-checked="false" disabled>
+              <span>English</span>
+            </button>
+            <button type="button" class="language-menu-item is-active" role="menuitemradio" aria-checked="true" disabled>
+              <span>繁體中文</span>
+            </button>
+          </div>
+        </div>
       </div>
       <nav id="sidebar-nav"></nav>
       <div class="sidebar-footer">
