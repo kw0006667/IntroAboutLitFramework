@@ -37,7 +37,7 @@ function ShoppingCart() {
 
   return (
     &lt;div&gt;
-      &lt;p&gt;共 {items.length} 件，總計 NT${total}&lt;/p&gt;
+      &lt;p&gt;共 {items.length} 件，總計 NT\${total}&lt;/p&gt;
       &lt;button onClick={() =&gt; dispatch({ type: 'CLEAR' })}&gt;清空&lt;/button&gt;
     &lt;/div&gt;
   );
