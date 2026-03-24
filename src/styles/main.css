@@ -74,6 +74,7 @@ a:hover {
   grid-template-columns: var(--sidebar-width) 1fr;
   height: 100vh;
   overflow: hidden;
+  max-width: 100%;
 }
 
 /* ─── Mobile Top Bar ─── */
@@ -166,6 +167,7 @@ a:hover {
   #content-area {
     height: auto;
     overflow: visible;
+    min-width: 0;
   }
 }
 
