@@ -1,6 +1,7 @@
 /* ─── Content Area ─── */
 #content-area {
   height: 100vh;
+  min-width: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-border) transparent;
@@ -11,6 +12,7 @@
 #content-area::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
 
 #content-wrapper {
+  width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 48px 48px 80px;
@@ -97,6 +99,16 @@ section[id] {
 }
 
 /* ─── Paragraphs ─── */
+
+#content-body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+#content-body pre code {
+  overflow-wrap: normal;
+  word-break: normal;
+}
 #content-body p {
   margin: 0 0 16px;
   color: var(--color-text-primary);
