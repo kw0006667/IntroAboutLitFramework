@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 
+const deployBase = process.env.DEPLOY_BASE || '/IntroAboutLitFramework/';
+
 export default defineConfig({
-  base: '/IntroAboutLitFramework/',
+  base: deployBase,
   build: {
     outDir: 'dist',
     rollupOptions: {
