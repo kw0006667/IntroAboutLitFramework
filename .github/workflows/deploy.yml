@@ -55,7 +55,7 @@ jobs:
     if: github.event_name == 'pull_request'
     environment:
       name: github-pages-preview
-      url: ${{ steps.deployment_preview.outputs.page_url }}
+      # Preview deploys currently return the default page_url output.
     runs-on: ubuntu-latest
     needs: build
     steps:
