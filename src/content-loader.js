@@ -23,6 +23,9 @@ const CHAPTER_MODULES = {
   20: () => import('./chapters/ch20.js'),
   21: () => import('./chapters/ch21.js'),
   22: () => import('./chapters/ch22.js'),
+  23: () => import('./chapters/ch23.js'),
+  24: () => import('./chapters/ch24.js'),
+  25: () => import('./chapters/ch25.js'),
 };
 
 export async function loadChapter(chapterId) {

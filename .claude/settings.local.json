@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(node -e \"require\\(''./src/chapters/ch10.js''\\); console.log\\(''ch10 OK''\\)\")",
+      "Bash(node -e \"require\\(''./src/chapters/ch11.js''\\); console.log\\(''ch11 OK''\\)\")",
+      "Bash(node -e \"require\\(''./src/chapters/ch12.js''\\); console.log\\(''ch12 OK''\\)\")",
+      "Bash(node -e \":*)",
+      "Bash(node -e \"import\\(''./src/chapters/ch15.js''\\).then\\(m => { const ch = m.default; console.log\\(''ch15 id:'', ch.id, ''| slug:'', ch.slug, ''| sections:'', ch.sections.length, ''| content length:'', ch.content.length\\); }\\).catch\\(e => console.error\\(''ch15 error:'', e.message\\)\\)\")",
+      "Bash(node --input-type=module:*)",
+      "Bash(grep -n '\\\\${{' /Users/timchang/Documents/NextJSProjs/IntroAboutLitFramework/src/chapters/ch18.js)"
     ]
   }
 }

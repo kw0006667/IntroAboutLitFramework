@@ -27,7 +27,7 @@ async function handleHash() {
   const sectionSlug = match[2] || null;
   _currentSectionSlug = sectionSlug;
 
-  if (chapterId < 1 || chapterId > 22) {
+  if (chapterId < 1 || chapterId > 25) {
     location.hash = 'chapter-1';
     return;
   }
