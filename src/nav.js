@@ -251,10 +251,6 @@ function setMobileState(newState) {
     newState = 'closed';
   }
 
-  if (newState !== 'closed' && !isDesktop() && !document.body.classList.contains('sidebar-collapsed')) {
-    newState = 'closed';
-  }
-
   mobileState = newState;
 
   const drawer = document.getElementById('mobile-drawer');
